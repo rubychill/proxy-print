@@ -1,0 +1,17 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    height: 100%;
+    background-color: white;
+    color: black;
+    padding: 2px;
+    overflow: hidden;
+}
+
+.footer {
+    align-self: flex-end;
+    border: 2px #000000 solid;
+    border-radius: 2px;
+    padding: 0 8px;
+}
