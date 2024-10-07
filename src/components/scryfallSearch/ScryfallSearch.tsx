@@ -57,8 +57,8 @@ export const ScryfallSearch = (props: ScryfallSearchProps) => {
             </TextField.Slot>
         </TextField.Root>
         {cardResults && <Flex gap="3" direction={"column"}>
-            {cardResults.length && cardResults.map((card) => (
-                <Box minWidth={"300px"}>
+            {cardResults.length > 0 ? cardResults.map((card) => (
+                <Box minWidth={"300px"} key={card.name}>
                     <Card asChild>
                         <a href="" onClick={(e) => {
                             e.preventDefault();
@@ -71,30 +71,7 @@ export const ScryfallSearch = (props: ScryfallSearchProps) => {
                         </a>
                     </Card>
                 </Box>
-            ))}
-            {cardResults.length === 0 && <Text>No results</Text>}
+            )) : <Text align="center">No results</Text>}
         </Flex>}
-        {/* <Field>
-            <Label>Scryfall Search</Label>
-            <Combobox
-                value={props.selectedCard}
-                onChange={props.setSelectedCard}
-            >
-                <ComboboxInput
-                    aria-label="SearchInput"
-                    placeholder="Enter card name..."
-                    value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
-                />
-                {cardResults && (cardResults.length ? <ComboboxOptions>
-                    {cardResults.map((card) => (
-                        <ComboboxOption key={card.name} value={card}>
-                            {card.name}
-                        </ComboboxOption>
-                    ))}
-                </ComboboxOptions> : "No results")}
-            </Combobox>
-        </Field> */}
-        
     </Box>
 }

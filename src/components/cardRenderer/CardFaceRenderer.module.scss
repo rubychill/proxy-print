@@ -1,4 +1,15 @@
+.container {
+    background: white;
+    padding: 4px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .body {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -7,11 +18,21 @@
     color: black;
     padding: 2px;
     overflow: hidden;
+
+    border: 1px black solid;
+}
+
+.rules {
+    flex-grow: 1;
 }
 
 .footer {
-    align-self: flex-end;
-    border: 2px #000000 solid;
+    border: 1px #000000 solid;
     border-radius: 2px;
-    padding: 0 8px;
+    padding: 0 2px;
+    float: right;
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    line-height: 1.125;
 }
