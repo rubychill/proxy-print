@@ -1,4 +1,4 @@
-import { PropsWithClass } from "././util";
+import { PropsWithClass } from "../../util";
 
 type MagicIconProps = PropsWithClass<{
     code: string;
