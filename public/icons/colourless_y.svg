@@ -54,16 +54,16 @@
      id="layer1">
     <g
        id="g2572"
-       style="fill:none;stroke:#000000;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:4"
        transform="matrix(0.26458333,0,0,0.26458333,194.60104,0.13229167)">
       <g
          id="g2566"
-         style="fill:none;stroke:#000000;stroke-opacity:1">
+         style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:4">
         <path
            fill="#C9C4BE"
            d="M -635,49.998 C -635,77.611 -657.383,100 -685,100 -712.613,100 -735,77.613 -735,49.999 -735,22.384 -712.613,0 -685,0 c 27.617,0 50,22.384 50,49.998 z"
            id="path2564"
-           style="fill:none;stroke:#000000;stroke-opacity:1" />
+           style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:4" />
       </g>
       <g
          id="g2570"

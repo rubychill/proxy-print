@@ -27,7 +27,11 @@ export const ArtProcessor = (props: ArtProcessorProps) => {
                     return loadedImage.grey();
                 case "edge":
                     // @ts-expect-error cannyEdge() seems to be missing from typedef
-                    return  loadedImage.grey().cannyEdge({lowThreshold: props.edgeThreshold[0], highThreshold: props.edgeThreshold[1], gaussianBlur: props.edgeBlur}).invert();
+                    return  loadedImage.grey().cannyEdge({
+                        lowThreshold: props.edgeThreshold[0], 
+                        highThreshold: props.edgeThreshold[1], 
+                        gaussianBlur: props.edgeBlur
+                    }).dilate().invert();
                 default:
                     return loadedImage;
             }

@@ -54,7 +54,7 @@
      id="layer1">
     <g
        id="g2256"
-       style="fill:none;stroke:#000000;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:4"
        transform="matrix(0.26458333,0,0,0.26458333,139.03854,0.13229167)">
       <circle
          fill="#f8f6d8"
@@ -62,7 +62,7 @@
          cy="50"
          r="50"
          id="circle2254"
-         style="fill:none;stroke:#000000;stroke-opacity:1" />
+         style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:4" />
     </g>
     <path
        fill="#0d0f0f"

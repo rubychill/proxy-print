@@ -54,18 +54,18 @@
      id="layer1">
     <g
        id="g2362"
-       style="fill:none;stroke:#000000;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:4"
        transform="matrix(0.26458333,0,0,0.26458333,0.13229166,-27.648958)">
       <path
          fill="#c1d7e9"
          d="M 85.35,119.637 C 94.403,128.688 100,141.188 100,154.997 100,182.613 77.613,205 50,205 36.193,205 23.695,199.404 14.646,190.354"
          id="path2358"
-         style="fill:none;stroke:#000000;stroke-opacity:1" />
+         style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:4" />
       <path
          fill="#a3c095"
          d="M 85.35,119.637 C 76.301,110.593 63.803,105 50,105 22.387,105 0,127.384 0,154.997 c 0,13.808 5.596,26.31 14.646,35.357 z"
          id="path2360"
-         style="fill:none;stroke:#000000;stroke-opacity:1" />
+         style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:4" />
     </g>
     <path
        fill="#0d0f0f"

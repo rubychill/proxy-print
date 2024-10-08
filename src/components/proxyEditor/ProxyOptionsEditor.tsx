@@ -14,6 +14,7 @@ export interface ProxyOptions {
     edgeBlur: number;
     typeLineSize: number;
     rulesSize: number;
+    showReminderText: boolean;
 }
 
 type ProxyOptionsEditorProps = PropsWithClass<{
@@ -94,14 +95,20 @@ export const ProxyOptionsEditor = (props: ProxyOptionsEditorProps) => {
         </Box>
         <Box asChild>
             <Card>
-                <Text>Rules Size</Text>
-                <Slider 
-                    min={4} 
-                    max={16} 
-                    step={0.5} 
-                    value={[props.options.rulesSize]} 
-                    onValueChange={(value) => props.onOptionsChange({...props.options, rulesSize: value[0]})}
-                />
+                <Flex direction={"column"} gap={"2"}>
+                    <Text>Rules Size</Text>
+                    <Slider 
+                        min={4} 
+                        max={16} 
+                        step={0.5} 
+                        value={[props.options.rulesSize]} 
+                        onValueChange={(value) => props.onOptionsChange({...props.options, rulesSize: value[0]})}
+                    />
+                    <Flex gap={"3"} align={"center"}>
+                        <Text>Show Reminder Text</Text>
+                        <Checkbox checked={props.options.showReminderText} onCheckedChange={(checked) => props.onOptionsChange({...props.options, showReminderText: checked !== "indeterminate" && checked})} />
+                    </Flex>
+                </Flex>
             </Card>
         </Box>
     </Flex>

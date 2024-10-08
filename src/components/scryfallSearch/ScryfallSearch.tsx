@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { PropsWithClass } from "../../util";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Card as CardData, Cards } from "scryfall-sdk";
 import { Box, Card, Flex, Text, TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
@@ -13,7 +13,7 @@ type ScryfallSearchProps = PropsWithClass<{
 export const ScryfallSearch = (props: ScryfallSearchProps) => {
     const [searchValue, setSearchValue] = useState("");
     const [cardResults, setCardResults] = useState<CardData[] | null>(null);
-    const [query, setQuery] = useState("");
+    const query = useRef<string>();
 
     const fetchCards = useCallback(async (search: string) => {
         const emitter = await Cards.search(search);
@@ -22,29 +22,24 @@ export const ScryfallSearch = (props: ScryfallSearchProps) => {
     }, []);
 
     useEffect(() => {
-        const handler = setTimeout(() => {
-            setQuery(searchValue);
+        const handler = setTimeout(async () => {
+            query.current = searchValue;
+
+            if (searchValue.length > 1) {
+                const cards = await fetchCards(searchValue);
+                if (searchValue == query.current) {
+                    setCardResults(cards);
+                }
+            } else {
+                setCardResults(null);
+            }
+    
         }, 200);
 
         return () => {
             clearTimeout(handler);
         }
-    }, [searchValue]);
-
-    useEffect(() => {
-        const asyncEffect = async () => {
-            if (query === searchValue) {
-                if (query.length > 1) {
-                    const cards = await fetchCards(searchValue);
-                    setCardResults(cards);
-                } else {
-                    setCardResults(null);
-                }
-            }
-        }
-
-        asyncEffect();
-    }, [query, searchValue, fetchCards]);
+    }, [searchValue, fetchCards]);
 
     return <Box>
         <TextField.Root 

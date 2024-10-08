@@ -56,12 +56,12 @@
        id="g2124"
        transform="matrix(0.26458333,0,0,0.26458333,166.81979,55.69532)">
       <circle
-         fill="#CAC5C0"
+         
          cx="-580"
          cy="-160.002"
          r="50"
          id="circle2122"
-         style="fill:none;stroke:#000000;stroke-opacity:1" />
+         style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:4" />
     </g>
     <path
        fill="#0d0f0f"
