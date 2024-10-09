@@ -50,7 +50,7 @@ const SingleFaceEditor = (props: SingleFaceEditorProps) => {
         }
     }, []);
 
-    return <Flex direction={"column"} gap={"2"}>
+    return <Flex direction={"column"} gap={"2"} p={"2px 8px"}>
         <Container size={"1"}>
             <Flex gap={"3"}>
                 <CardFaceRenderer 

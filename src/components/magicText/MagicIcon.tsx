@@ -53,10 +53,10 @@ const icons: {[code: string]: string} = {
     "{W/B}": "icons/mana_hybrid_wb.svg",
     "{W/U}": "icons/mana_hybrid_wu.svg",
     "{W/P}": "icons/mana_hybrid_wp.svg",
-    "{U/P}": "icons/mana_hybrid_wp.svg",
-    "{B/P}": "icons/mana_hybrid_wp.svg",
-    "{R/P}": "icons/mana_hybrid_wp.svg",
-    "{G/P}": "icons/mana_hybrid_wp.svg",
+    "{U/P}": "icons/mana_hybrid_up.svg",
+    "{B/P}": "icons/mana_hybrid_bp.svg",
+    "{R/P}": "icons/mana_hybrid_rp.svg",
+    "{G/P}": "icons/mana_hybrid_gp.svg",
     "{B/G/P}": "icons/mana_hybrid_pp.svg",
     "{B/R/P}": "icons/mana_hybrid_pp.svg",
     "{G/U/P}": "icons/mana_hybrid_pp.svg",
@@ -70,8 +70,10 @@ const icons: {[code: string]: string} = {
     "{S}": "icons/mana_snow.svg",
     "{HW}": "icons/mana_half_white.svg",
     "{HR}": "icons/mana_half_red.svg",
+    "{E}": "icons/energy.svg",
+    "{P}": "icons/pawprint.svg",
 }
 
 export const MagicIcon = (props: MagicIconProps) => {
-    return <img style={{display: "inline", height: `${props.iconSize}pt`}} src={icons[props.code]} />
+    return <img style={{display: "inline", height: `${props.iconSize}pt`, margin: "0 0.5px"}} src={icons[props.code]} />
 }
