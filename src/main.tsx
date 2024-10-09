@@ -11,6 +11,7 @@ createRoot(document.getElementById('root')!).render(
       appearance='dark'
       accentColor='amber'
       grayColor='slate'
+      panelBackground="solid"
     >
       <App />
     </Theme>

@@ -1,9 +1,9 @@
-import classNames from "classnames";
 import { PropsWithClass } from "../../util";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, useState } from "react";
 import { Card as CardData, Cards } from "scryfall-sdk";
-import { Box, Card, Flex, Text, TextField } from "@radix-ui/themes";
+import { Box, TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { ScryfallSearchResults } from "./ScryfallSearchResults";
 
 type ScryfallSearchProps = PropsWithClass<{
     selectedCard: CardData | null,
@@ -12,36 +12,8 @@ type ScryfallSearchProps = PropsWithClass<{
 
 export const ScryfallSearch = (props: ScryfallSearchProps) => {
     const [searchValue, setSearchValue] = useState("");
-    const [cardResults, setCardResults] = useState<CardData[] | null>(null);
-    const query = useRef<string>();
-
-    const fetchCards = useCallback(async (search: string) => {
-        const emitter = await Cards.search(search);
-        const cards = await emitter.cancelAfterPage().waitForAll();
-        return cards;
-    }, []);
-
-    useEffect(() => {
-        const handler = setTimeout(async () => {
-            query.current = searchValue;
-
-            if (searchValue.length > 1) {
-                const cards = await fetchCards(searchValue);
-                if (searchValue == query.current) {
-                    setCardResults(cards);
-                }
-            } else {
-                setCardResults(null);
-            }
     
-        }, 200);
-
-        return () => {
-            clearTimeout(handler);
-        }
-    }, [searchValue, fetchCards]);
-
-    return <Box>
+    return <Box position={"relative"}>
         <TextField.Root 
             placeholder="Search card name..."
             value={searchValue}
@@ -51,22 +23,12 @@ export const ScryfallSearch = (props: ScryfallSearchProps) => {
                 <MagnifyingGlassIcon width={16} height={16} />
             </TextField.Slot>
         </TextField.Root>
-        {cardResults && <Flex gap="3" direction={"column"}>
-            {cardResults.length > 0 ? cardResults.map((card) => (
-                <Box minWidth={"300px"} key={card.name}>
-                    <Card asChild>
-                        <a href="" onClick={(e) => {
-                            e.preventDefault();
-                            props.setSelectedCard(card);
-                            setSearchValue("");
-                            setCardResults(null);
-                        }}>
-                            <Text as="div" weight="bold">{card.name}</Text>
-                            <Text as="div" color="gray">{card.type_line}</Text>
-                        </a>
-                    </Card>
-                </Box>
-            )) : <Text align="center">No results</Text>}
-        </Flex>}
+        <ScryfallSearchResults 
+            searchValue={searchValue}
+            onCardSelected={(card) => {
+                props.setSelectedCard(card);
+                setSearchValue("");
+            }}
+        />
     </Box>
 }
