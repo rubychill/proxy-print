@@ -6,4 +6,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   base: "./",
+  define: {
+    '__APP_VERSION__': JSON.stringify(process.env.npm_package_version),
+  },
 })

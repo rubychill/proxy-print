@@ -36,7 +36,6 @@ export const ScryfallSearchResults = (props: ScryfallSearchResultsProps) => {
         }
     }, [props.searchValue, fetchCards]);
 
-    console.log(query.current);
     return props.searchValue.length > 1 && <Card mt={"8px"} style={{position: "absolute", zIndex: 1, width: "100%"}}>
         <Skeleton loading={!cardResults} minHeight={"72px"}>
             <Flex gap="3" direction={"column"}>
