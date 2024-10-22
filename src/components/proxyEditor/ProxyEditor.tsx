@@ -1,4 +1,4 @@
-import { Card, CardFace } from "scryfall-sdk";
+import { Card as CardData, CardFace } from "scryfall-sdk";
 import { PropsWithClass } from "../../util";
 import { useCallback, useRef, useState } from "react";
 import { CardFaceRenderer } from "../cardRenderer/CardFaceRenderer";
@@ -9,8 +9,8 @@ import fileSaver from "file-saver";
 import domToImage from "dom-to-image";
 
 const proxyOptionsDefaults: ProxyOptions = {
-    printWidth: 48,
-    printHeight: 86,
+    printWidth: "48",
+    printHeight: "80",
     headerSize: 10, //12pt
     showImage: true,
     processingType: "greyscale",
@@ -22,11 +22,11 @@ const proxyOptionsDefaults: ProxyOptions = {
 };
 
 type ProxyEditorProps = PropsWithClass<{
-    cardData: Card;
+    cardData: CardData;
 }>
 
 export const ProxyEditor = (props: ProxyEditorProps) => {
-    return <Flex direction={"column"} align={"stretch"} gap={"4"}>
+    return<Flex direction={"column"} align={"stretch"} gap={"4"}>
         {props.cardData.card_faces.map((face) => <SingleFaceEditor
             key={face.name}
             face={face}
@@ -45,14 +45,14 @@ const SingleFaceEditor = (props: SingleFaceEditorProps) => {
     const downloadPrint = useCallback(async () => {
         if (printRef.current) {
             const blob = await domToImage.toBlob(printRef.current);
-            const filename = props.face.name.replace(/\'/, "");
+            const filename = props.face.name.replace(/'/, "");
             fileSaver.saveAs(blob, `${filename}.png`);
         }
-    }, []);
+    }, [props.face.name]);
 
     return <Flex direction={"column"} gap={"2"} p={"2px 8px"}>
         <Container size={"1"}>
-            <Flex gap={"3"}>
+            <Flex gap={"3"} align={"center"}>
                 <CardFaceRenderer 
                     cardFace={props.face} 
                     options={options}

@@ -1,12 +1,12 @@
 import classNames from "classnames";
 import { PropsWithClass } from "../../util";
-import { Box, Card, Checkbox, Flex, Select, Slider, Text } from "@radix-ui/themes";
+import { Box, Card, Checkbox, Flex, Grid, Select, Slider, Text, TextField } from "@radix-ui/themes";
 
 export type ProcessingType = "none" | "greyscale" | "edge";
 
 export interface ProxyOptions {
-    printWidth: number;
-    printHeight: number;
+    printWidth: string;
+    printHeight: string;
     headerSize: number;
     showImage: boolean;
     processingType: ProcessingType;
@@ -24,6 +24,32 @@ type ProxyOptionsEditorProps = PropsWithClass<{
 
 export const ProxyOptionsEditor = (props: ProxyOptionsEditorProps) => {
     return <Flex direction={"column"} align={"stretch"} gap={"2"} className={classNames(props.className)}>
+        <Box asChild>
+            <Card>
+                <Text>Print Dimensions</Text>
+                <Flex gap={"2"}>
+                    <Box asChild width={"80px"}>
+                        <TextField.Root
+                            value={props.options.printWidth}
+                            onChange={(e) => props.onOptionsChange({...props.options, printWidth: e.target.value})}
+                            type={"number"}
+                        >
+                            <TextField.Slot side={"right"}>mm</TextField.Slot>
+                        </TextField.Root>
+                    </Box>
+                    <Text>x</Text>
+                    <Box asChild width={"80px"}>
+                        <TextField.Root
+                            value={props.options.printHeight}
+                            onChange={(e) => props.onOptionsChange({...props.options, printHeight: e.target.value})}
+                            type={"number"}
+                        >
+                            <TextField.Slot side={"right"}>mm</TextField.Slot>
+                        </TextField.Root>
+                    </Box>
+                </Flex>
+            </Card>
+        </Box>
         <Box asChild>
             <Card>
                 <Text>Header Size</Text>
