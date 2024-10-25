@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { PropsWithClass } from "../../util";
-import { Box, Card, Checkbox, Flex, Grid, Select, Slider, Text, TextField } from "@radix-ui/themes";
+import { Box, Button, Card, Checkbox, Dialog, Flex, Select, Slider, Text, TextField } from "@radix-ui/themes";
+import { CardArtPicker } from "./CardArtPicker";
 
 export type ProcessingType = "none" | "greyscale" | "edge";
 
@@ -15,6 +16,7 @@ export interface ProxyOptions {
     typeLineSize: number;
     rulesSize: number;
     showReminderText: boolean;
+    artSrc: string;
 }
 
 type ProxyOptionsEditorProps = PropsWithClass<{
@@ -28,7 +30,7 @@ export const ProxyOptionsEditor = (props: ProxyOptionsEditorProps) => {
             <Card>
                 <Text>Print Dimensions</Text>
                 <Flex gap={"2"}>
-                    <Box asChild width={"80px"}>
+                    <Box asChild width={"70px"}>
                         <TextField.Root
                             value={props.options.printWidth}
                             onChange={(e) => props.onOptionsChange({...props.options, printWidth: e.target.value})}
@@ -38,7 +40,7 @@ export const ProxyOptionsEditor = (props: ProxyOptionsEditorProps) => {
                         </TextField.Root>
                     </Box>
                     <Text>x</Text>
-                    <Box asChild width={"80px"}>
+                    <Box asChild width={"70px"}>
                         <TextField.Root
                             value={props.options.printHeight}
                             onChange={(e) => props.onOptionsChange({...props.options, printHeight: e.target.value})}
@@ -69,6 +71,9 @@ export const ProxyOptionsEditor = (props: ProxyOptionsEditorProps) => {
                         <Text>Show Image</Text>
                         <Checkbox checked={props.options.showImage} onCheckedChange={(checked) => props.onOptionsChange({...props.options, showImage: checked !== "indeterminate" && checked})} />
                     </Flex>
+                    {props.options.showImage && <CardArtPicker 
+                        onArtSelected={(artSrc) => props.onOptionsChange({...props.options, artSrc: artSrc})}
+                    />}
                     {props.options.showImage && <Select.Root
                         value={props.options.processingType}
                         onValueChange={(value) => {

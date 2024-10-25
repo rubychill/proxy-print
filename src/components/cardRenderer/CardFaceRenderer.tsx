@@ -32,7 +32,7 @@ export const CardFaceRenderer = forwardRef((props: CardFaceRenderProps, ref: Rea
             </div>
             {props.options.showImage && <ArtProcessor 
                 className={styles.art}
-                src={props.cardFace.image_uris?.art_crop} 
+                src={props.options.artSrc} 
                 {...props.options}
             />}
             <p

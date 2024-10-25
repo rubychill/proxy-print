@@ -1,6 +1,6 @@
-import { Card as CardData, CardFace } from "scryfall-sdk";
+import { Card, Card as CardData, CardFace } from "scryfall-sdk";
 import { PropsWithClass } from "../../util";
-import { useCallback, useRef, useState } from "react";
+import { createContext, useCallback, useEffect, useRef, useState } from "react";
 import { CardFaceRenderer } from "../cardRenderer/CardFaceRenderer";
 import { ProxyOptions, ProxyOptionsEditor } from "./ProxyOptionsEditor";
 import { Box, Button, Container, Flex } from "@radix-ui/themes";
@@ -19,6 +19,7 @@ const proxyOptionsDefaults: ProxyOptions = {
     typeLineSize: 10,
     rulesSize: 10,
     showReminderText: true,
+    artSrc: ""
 };
 
 type ProxyEditorProps = PropsWithClass<{
@@ -27,10 +28,12 @@ type ProxyEditorProps = PropsWithClass<{
 
 export const ProxyEditor = (props: ProxyEditorProps) => {
     return<Flex direction={"column"} align={"stretch"} gap={"4"}>
-        {props.cardData.card_faces.map((face) => <SingleFaceEditor
-            key={face.name}
-            face={face}
-        />)}
+        <CardContext.Provider value={props.cardData}>
+            {props.cardData.card_faces.map((face) => <SingleFaceEditor
+                key={face.name}
+                face={face}
+            />)}
+        </CardContext.Provider>
     </Flex>;
 }
 
@@ -39,8 +42,12 @@ type SingleFaceEditorProps = PropsWithClass<{
 }>
 
 const SingleFaceEditor = (props: SingleFaceEditorProps) => {
-    const [options, setOptions] = useState<ProxyOptions>(proxyOptionsDefaults);
+    const [options, setOptions] = useState<ProxyOptions>({...proxyOptionsDefaults, artSrc: props.face.getImageURI("art_crop") || ""});
     const printRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        setOptions((existing) => ({...existing, artSrc: props.face.getImageURI("art_crop") || ""}))
+    }, [props.face])
 
     const downloadPrint = useCallback(async () => {
         if (printRef.current) {
@@ -75,3 +82,5 @@ const SingleFaceEditor = (props: SingleFaceEditorProps) => {
         </Box>
     </Flex>
 }
+
+export const CardContext = createContext<Card | null>(null);

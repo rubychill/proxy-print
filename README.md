@@ -6,6 +6,10 @@ https://thatchill.com/proxy-print
 
 ## Changelog
 
+### v0.1.2
+- Custom print dimensions
+- Card art picker
+
 ### v0.1.1
 - Search bar improvements
 - Fixed broken and missing card symbols

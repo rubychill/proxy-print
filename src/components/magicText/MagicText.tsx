@@ -21,7 +21,7 @@ const addIconsToText = (text: string, iconSize: number): React.ReactNode[] => {
                 return [current, <MagicIcon iconSize={iconSize} code={regexMatches[i]} />];
             } else {
                 if (i < regexMatches.length) {
-                    return prev.concat(current, <MagicIcon iconSize={iconSize} code={regexMatches[i]} />);
+                    return prev.concat(current, <MagicIcon iconSize={iconSize} code={regexMatches[i]} key={`${regexMatches[i]}, ${i}`} />);
                 } else {
                     return prev.concat(current);
                 }

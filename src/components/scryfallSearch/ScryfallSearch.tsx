@@ -1,6 +1,6 @@
 import { PropsWithClass } from "../../util";
-import { Suspense, useState } from "react";
-import { Card as CardData, Cards } from "scryfall-sdk";
+import { useState } from "react";
+import { Card as CardData } from "scryfall-sdk";
 import { Box, TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { ScryfallSearchResults } from "./ScryfallSearchResults";
