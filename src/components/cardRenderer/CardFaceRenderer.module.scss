@@ -3,11 +3,6 @@
     padding: 4px;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-}
-
 .body {
     position: relative;
     display: flex;
@@ -21,27 +16,4 @@
     overflow: hidden;
 
     border: 1px black solid;
-}
-
-.art {
-    // border: 1px black solid;
-}
-
-.typeLine {
-    font-weight: bold;
-}
-
-.rules {
-    flex-grow: 1;
-}
-
-.footer {
-    border: 1px #000000 solid;
-    border-radius: 2px;
-    padding: 0 2px;
-    float: right;
-    position: absolute;
-    right: 3px;
-    bottom: 3px;
-    line-height: 1.125;
 }

@@ -19,6 +19,20 @@ export interface ProxyOptions {
     artSrc: string;
 }
 
+export const proxyOptionsDefaults: ProxyOptions = {
+    printWidth: "48",
+    printHeight: "80",
+    headerSize: 10, //12pt
+    showImage: true,
+    processingType: "greyscale",
+    edgeThreshold: [10, 40],
+    edgeBlur: 5,
+    typeLineSize: 10,
+    rulesSize: 10,
+    showReminderText: true,
+    artSrc: ""
+};
+
 type ProxyOptionsEditorProps = PropsWithClass<{
     options: ProxyOptions;
     onOptionsChange: (options: ProxyOptions) => void;

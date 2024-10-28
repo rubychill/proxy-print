@@ -2,25 +2,11 @@ import { Card, Card as CardData, CardFace } from "scryfall-sdk";
 import { PropsWithClass } from "../../util";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
 import { CardFaceRenderer } from "../cardRenderer/CardFaceRenderer";
-import { ProxyOptions, ProxyOptionsEditor } from "./ProxyOptionsEditor";
+import { ProxyOptions, proxyOptionsDefaults, ProxyOptionsEditor } from "./ProxyOptionsEditor";
 import { Box, Button, Container, Flex } from "@radix-ui/themes";
 import { DownloadIcon } from "@radix-ui/react-icons";
 import fileSaver from "file-saver";
 import domToImage from "dom-to-image";
-
-const proxyOptionsDefaults: ProxyOptions = {
-    printWidth: "48",
-    printHeight: "80",
-    headerSize: 10, //12pt
-    showImage: true,
-    processingType: "greyscale",
-    edgeThreshold: [10, 40],
-    edgeBlur: 5,
-    typeLineSize: 10,
-    rulesSize: 10,
-    showReminderText: true,
-    artSrc: ""
-};
 
 type ProxyEditorProps = PropsWithClass<{
     cardData: CardData;
