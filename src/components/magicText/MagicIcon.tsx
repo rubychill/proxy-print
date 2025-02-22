@@ -72,6 +72,7 @@ const icons: {[code: string]: string} = {
     "{HR}": "icons/mana_half_red.svg",
     "{E}": "icons/energy.svg",
     "{P}": "icons/pawprint.svg",
+    "{X}": "icons/colourless_x.svg"
 }
 
 export const MagicIcon = (props: MagicIconProps) => {
